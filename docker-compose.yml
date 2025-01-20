@@ -1,0 +1,11 @@
+services:
+  nuxt:
+    build: .
+    container_name: seller-nuxt
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/app
+    command: ["sleep", "infinity"] 
