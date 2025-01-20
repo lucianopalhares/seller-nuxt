@@ -8,6 +8,7 @@ const _794effcc = () => interopDefault(import('../pages/dashboard.vue' /* webpac
 const _10ba8d22 = () => interopDefault(import('../pages/login.vue' /* webpackChunkName: "pages/login" */))
 const _49c57cf4 = () => interopDefault(import('../pages/logout.vue' /* webpackChunkName: "pages/logout" */))
 const _54450c4c = () => interopDefault(import('../pages/sellers.vue' /* webpackChunkName: "pages/sellers" */))
+const _44a707a9 = () => interopDefault(import('../pages/sales/_seller_id.vue' /* webpackChunkName: "pages/sales/_seller_id" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -41,6 +42,10 @@ export const routerOptions = {
     path: "/sellers",
     component: _54450c4c,
     name: "sellers"
+  }, {
+    path: "/sales/:seller_id?",
+    component: _44a707a9,
+    name: "sales-seller_id"
   }],
 
   fallback: false

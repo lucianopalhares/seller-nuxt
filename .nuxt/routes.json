@@ -26,5 +26,12 @@
     "component": "/app/pages/sellers.vue",
     "chunkName": "pages/sellers",
     "_name": "_54450c4c"
+  },
+  {
+    "name": "sales-seller_id",
+    "path": "/sales/:seller_id?",
+    "component": "/app/pages/sales/_seller_id.vue",
+    "chunkName": "pages/sales/_seller_id",
+    "_name": "_44a707a9"
   }
 ]
