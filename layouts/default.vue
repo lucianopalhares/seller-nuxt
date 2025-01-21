@@ -50,19 +50,7 @@
           <v-list-item-group
             active-class="border"
             color="indigo"
-            >                  
-   
-          <NuxtLink to="/dashboard">
-            <v-list-item>
-              <v-list-item-icon>
-                <v-icon v-text="'mdi-adjust'"></v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title v-text="'Dashboard'"></v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </NuxtLink>
-   
+            >              
 
           <NuxtLink to="/create_seller">
             <v-list-item>

@@ -2,7 +2,7 @@
   <v-row>
     <v-col class="text-center grey--text">
 
-      <h1>Página Dashboard</h1>
+      <h1>Bem-vindo, escolha uma opção no menu!</h1>
 
       <img
         src="/v.png"
