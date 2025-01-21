@@ -64,7 +64,7 @@
           </NuxtLink>
    
 
-          <NuxtLink to="/create-seller">
+          <NuxtLink to="/create_seller">
             <v-list-item>
               <v-list-item-icon>
                 <v-icon v-text="'mdi-table'"></v-icon>

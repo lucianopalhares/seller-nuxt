@@ -41,7 +41,6 @@
           </template>
 
       <template v-slot:item.actions="{ item }">
-        <v-icon small class="mr-2" @click="viewSeller(item)">mdi-eye</v-icon>
         <v-icon
           small
           class="mr-2"

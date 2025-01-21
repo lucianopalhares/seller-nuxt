@@ -12,7 +12,7 @@
             >
 
             <v-toolbar-title >      
-                Login 
+                Cadastro de Usuário
             </v-toolbar-title>
 
             <v-divider
