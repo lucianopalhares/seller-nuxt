@@ -30,7 +30,7 @@ export default {
           // Ação após o logout bem-sucedido, como redirecionamento ou limpeza de estado
           console.log('Logout realizado com sucesso', response);
           
-          // Opcional: Redireciona para a página de login após o logout
+          localStorage.removeItem('token');
           this.$router.push('/login');
         } else {
           console.log('Token de autenticação não encontrado');

@@ -15,6 +15,8 @@ export default {
     ]
   },
 
+  middleware: 'auth',
+
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
   ],
@@ -93,10 +95,10 @@ export default {
     strategies: {
       local: {
         endpoints: {
-          login: { url: 'http://localhost:8000/api/login', method: 'post', propertyName: 'token' },  // URL para login
-          logout: { url: 'http://localhost:8000/api/logout', method: 'post' },  // URL para logout
-          user: { url: 'http://localhost:8000/api/user', method: 'get', propertyName: 'data' },  // URL para obter dados do usuário
-          register: { url: 'http://localhost:8000/api/register', method: 'post', propertyName: 'token' }  // URL para cadastrar usuário
+          login: { url: `${process.env.URL_API}/login`, method: 'post', propertyName: 'token' },  // URL para login
+          logout: { url: `${process.env.URL_API}/logout`, method: 'post' },  // URL para logout
+          user: { url: `${process.env.URL_API}/user`, method: 'get', propertyName: 'data' },  // URL para obter dados do usuário
+          register: { url: `${process.env.URL_API}/register`, method: 'post', propertyName: 'token' }  // URL para cadastrar usuário
         },
         tokenRequired: true,  // Indica que o token é necessário para as requisições subsequentes
         tokenType: 'Bearer'   // Define o tipo do token como 'Bearer'
