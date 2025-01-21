@@ -4,10 +4,12 @@ import { normalizeURL } from '@nuxt/ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
+const _aaaaa6a0 = () => interopDefault(import('../pages/create_sale.vue' /* webpackChunkName: "pages/create_sale" */))
 const _794effcc = () => interopDefault(import('../pages/dashboard.vue' /* webpackChunkName: "pages/dashboard" */))
 const _10ba8d22 = () => interopDefault(import('../pages/login.vue' /* webpackChunkName: "pages/login" */))
 const _49c57cf4 = () => interopDefault(import('../pages/logout.vue' /* webpackChunkName: "pages/logout" */))
 const _54450c4c = () => interopDefault(import('../pages/sellers.vue' /* webpackChunkName: "pages/sellers" */))
+const _44a707a9 = () => interopDefault(import('../pages/sales/_seller_id.vue' /* webpackChunkName: "pages/sales/_seller_id" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -26,6 +28,10 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
+    path: "/create_sale",
+    component: _aaaaa6a0,
+    name: "create_sale"
+  }, {
     path: "/dashboard",
     component: _794effcc,
     name: "dashboard"
@@ -41,6 +47,10 @@ export const routerOptions = {
     path: "/sellers",
     component: _54450c4c,
     name: "sellers"
+  }, {
+    path: "/sales/:seller_id?",
+    component: _44a707a9,
+    name: "sales-seller_id"
   }],
 
   fallback: false

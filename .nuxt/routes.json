@@ -1,5 +1,12 @@
 [
   {
+    "name": "create_sale",
+    "path": "/create_sale",
+    "component": "/app/pages/create_sale.vue",
+    "chunkName": "pages/create_sale",
+    "_name": "_aaaaa6a0"
+  },
+  {
     "name": "dashboard",
     "path": "/dashboard",
     "component": "/app/pages/dashboard.vue",
@@ -26,5 +33,12 @@
     "component": "/app/pages/sellers.vue",
     "chunkName": "pages/sellers",
     "_name": "_54450c4c"
+  },
+  {
+    "name": "sales-seller_id",
+    "path": "/sales/:seller_id?",
+    "component": "/app/pages/sales/_seller_id.vue",
+    "chunkName": "pages/sales/_seller_id",
+    "_name": "_44a707a9"
   }
 ]
