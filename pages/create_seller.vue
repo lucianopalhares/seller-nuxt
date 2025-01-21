@@ -1,62 +1,45 @@
 <template>
     <div class="form-container">
-        <v-toolbar
-    flat
-    color="primary"
-    >
-
-    <v-toolbar-title >      
-        Realizar venda
-    </v-toolbar-title>
-
-    <v-divider
-        class="mx-12"
-        inset
-        vertical
-    ></v-divider>
-
-    <v-spacer></v-spacer>
-        
-    </v-toolbar>
+      <v-toolbar flat color="primary">
+        <v-toolbar-title>
+          Cadastrar Vendedor
+        </v-toolbar-title>
+        <v-divider class="mx-12" inset vertical></v-divider>
+        <v-spacer></v-spacer>
+      </v-toolbar>
   
       <v-divider class="mx-2" inset vertical></v-divider>
- 
+  
       <v-form ref="form" v-model="valid" lazy-validation>
         <v-container>
           <v-row>
-            <v-col cols="12" sm="6" md="12">
-              <v-select
-                v-model="sale.seller_id"
-                :items="sellers"
-                :item-text="'name'"
-                :item-value="'id'"
-                label="Selecione o vendedor"
-                required
-                :rules="[rules.required]"
-                :loading="loadingSellers"
-                class="input-field"
-              ></v-select>
-            </v-col>
-    
+            <!-- Campo para o nome do vendedor -->
             <v-col cols="12" sm="6" md="12">
               <v-text-field
-                v-model="sale.sale_value"
-                label="Valor da Venda"
+                v-model="seller.name"
+                label="Nome do Vendedor"
                 required
-                :rules="[rules.required, rules.isNumber]"
-                type="number"
-                class="input-field"
-              ></v-text-field>
+                :rules="[rules.required]"
+                class="input-field mb-4"
+              />
             </v-col>
-    
+  
+            <!-- Campo para o e-mail do vendedor -->
+            <v-col cols="12" sm="6" md="12">
+              <v-text-field
+                v-model="seller.email"
+                label="Email do Vendedor"
+                required
+                type="email"
+                :rules="[rules.required, rules.isEmail]"
+                class="input-field mb-4"
+              />
+            </v-col>
+  
+            <!-- Botões de salvar e limpar -->
             <v-row>
-              <v-btn
-                :disabled="!valid || loading"
-                color="primary"
-                class="mr-3"
-                @click="submitForm"
-              >
-                Salvar Venda
+              <v-btn :disabled="!valid || loading" color="primary" @click="submitForm">
+                Salvar Vendedor
               </v-btn>
               <v-btn color="grey" @click="resetForm">Limpar</v-btn>
             </v-row>
@@ -72,80 +55,51 @@
       return {
         valid: false,
         loading: false,
-        loadingSellers: false,
-        sellers: [],
-        sale: {
-          seller_id: null,
-          sale_value: null,
+        seller: {
+          name: '',
+          email: '',
         },
         urlApi: 'http://localhost:8000/api',
         rules: {
           required: (value) => !!value || 'Campo obrigatório.',
-          isNumber: (value) =>
-            !isNaN(value) || 'O valor deve ser um número válido.',
+          isEmail: (value) => /\S+@\S+\.\S+/.test(value) || 'E-mail inválido.',
         },
       };
     },
     methods: {
-      async fetchSellers() {
-        this.loadingSellers = true;
-        try {
-          const token = localStorage.getItem('token');
-          const response = await fetch(`${this.urlApi}/sellers`, {
-            method: 'GET',
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-  
-          if (!response.ok) {
-            throw new Error('Erro ao buscar vendedores');
-          }
-  
-          const result = await response.json();
-          this.sellers = result.data;
-        } catch (error) {
-          console.error('Erro ao carregar vendedores:', error.message);
-        } finally {
-          this.loadingSellers = false;
-        }
-      },
       async submitForm() {
         this.loading = true;
         try {
           const token = localStorage.getItem('token');
-          const response = await fetch(`${this.urlApi}/sales`, {
+          const response = await fetch(`${this.urlApi}/sellers`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
               Authorization: `Bearer ${token}`,
             },
-            body: JSON.stringify(this.sale),
+            body: JSON.stringify(this.seller),
           });
   
           if (!response.ok) {
-            throw new Error('Erro ao salvar venda');
+            throw new Error('Erro ao cadastrar vendedor');
           }
   
           const result = await response.json();
-          alert('Venda cadastrada com sucesso!');
+          alert('Vendedor cadastrado com sucesso!');
           this.resetForm();
         } catch (error) {
-          console.error('Erro ao salvar venda:', error.message);
+          console.error('Erro ao cadastrar vendedor:', error.message);
         } finally {
           this.loading = false;
         }
       },
       resetForm() {
-        this.sale = {
-          seller_id: null,
-          sale_value: null,
+        this.seller = {
+          name: '',
+          email: '',
         };
         this.$refs.form.reset();
       },
-    },
-    mounted() {
-      this.fetchSellers(); // Carrega a lista de vendedores ao montar o componente
     },
   };
   </script>

@@ -6,27 +6,36 @@
           <!-- Texto superior "Entrar" -->
           <v-row>
             <v-col class="text-center" cols="12">
-              <h3>Entrar</h3>
+              <v-toolbar
+            flat
+            color="primary"
+            >
+
+            <v-toolbar-title >      
+                Login
+            </v-toolbar-title>
+
+            <v-divider
+                class="mx-12"
+                inset
+                vertical
+            ></v-divider>
+
+            <v-spacer></v-spacer>
+                
+            </v-toolbar>
             </v-col>
           </v-row>
           
           <!-- Formulário -->
           <v-form @submit.prevent="submitForm">
             <v-text-field
-              v-model="user.name"
-              label="Nome"
-              required
-              outlined
-              color="black"
-              class="mb-4"
-            />
-            <v-text-field
               v-model="user.email"
               label="Email"
               required
               outlined
               type="email"
-              class="mb-4"
+              class="input-field mb-4"
             />
             <v-text-field
               v-model="user.password"
@@ -34,11 +43,10 @@
               required
               outlined
               type="password"
-              color="black"
-              class="mb-4"
+              class="input-field mb-4"
             />
             <v-btn type="submit" color="primary" block>
-              Login
+              Entrar
             </v-btn>
           </v-form>
         </v-card>
@@ -72,6 +80,29 @@ export default {
   border-radius: 8px;
 }
 
+/* Estilo para os inputs */
+.input-field {
+  background-color: black; /* Cinza claro */
+  padding: 10px;
+  position: relative;
+}
+
+.input-field input::placeholder {
+  color: transparent; /* Torna o placeholder transparente */
+}
+
+.input-field label {
+  color: black !important;
+  position: absolute;
+  top: -10px; /* Ajusta a posição do label acima do input */
+  left: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  background-color: white;
+  padding: 0 5px;
+}
+
+/* Ajuste da borda dos inputs */
 .v-text-field .v-input__control {
   border-color: black;
 }
