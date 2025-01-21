@@ -86,7 +86,16 @@
             </v-list-item>
           </NuxtLink>
   
-      
+          <NuxtLink to="/create_sale">
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon v-text="'mdi-table'"></v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title v-text="'Realizar Venda'"></v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </NuxtLink>
             
 
           </v-list-item-group>
