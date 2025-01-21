@@ -30,9 +30,15 @@
             Atualizar
           </v-btn>
 
+
+
           <v-text-field v-model="search" label="Buscar" class="mx-4"></v-text-field>
         </v-toolbar>
       </template>
+
+      <template v-slot:item.total_comission="{ item }">
+            <span>R$ {{ item.total_comission.toFixed(2).replace('.', ',') }}</span>
+          </template>
 
       <template v-slot:item.actions="{ item }">
         <v-icon small class="mr-2" @click="viewSeller(item)">mdi-eye</v-icon>
@@ -64,7 +70,7 @@ export default {
         { text: 'Nome', value: 'name' },
         { text: 'Email', value: 'email' },
         { text: 'Comissão', value: 'total_comission' },
-        { text: 'Ações', value: 'actions', sortable: false },
+        { text: 'Vendas', value: 'actions', sortable: false },
       ];
     },
     isShowList() {

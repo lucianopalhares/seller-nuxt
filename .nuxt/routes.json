@@ -1,5 +1,12 @@
 [
   {
+    "name": "create_sale",
+    "path": "/create_sale",
+    "component": "/app/pages/create_sale.vue",
+    "chunkName": "pages/create_sale",
+    "_name": "_aaaaa6a0"
+  },
+  {
     "name": "dashboard",
     "path": "/dashboard",
     "component": "/app/pages/dashboard.vue",

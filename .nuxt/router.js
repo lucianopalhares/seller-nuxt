@@ -4,6 +4,7 @@ import { normalizeURL } from '@nuxt/ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
+const _aaaaa6a0 = () => interopDefault(import('../pages/create_sale.vue' /* webpackChunkName: "pages/create_sale" */))
 const _794effcc = () => interopDefault(import('../pages/dashboard.vue' /* webpackChunkName: "pages/dashboard" */))
 const _10ba8d22 = () => interopDefault(import('../pages/login.vue' /* webpackChunkName: "pages/login" */))
 const _49c57cf4 = () => interopDefault(import('../pages/logout.vue' /* webpackChunkName: "pages/logout" */))
@@ -27,6 +28,10 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
+    path: "/create_sale",
+    component: _aaaaa6a0,
+    name: "create_sale"
+  }, {
     path: "/dashboard",
     component: _794effcc,
     name: "dashboard"
