@@ -89,6 +89,7 @@
           this.resetForm();
         } catch (error) {
           console.error('Erro ao cadastrar vendedor:', error.message);
+          this.$router.push('/login');
         } finally {
           this.loading = false;
         }

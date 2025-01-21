@@ -98,6 +98,7 @@ export default {
         }
       } catch (error) {
         console.error('Erro ao buscar vendas:', error.message);
+        this.$router.push('/login');
       } finally {
         this.loading = false;
       }

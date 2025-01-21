@@ -106,6 +106,7 @@
           this.sellers = result.data;
         } catch (error) {
           console.error('Erro ao carregar vendedores:', error.message);
+          this.$router.push('/login');
         } finally {
           this.loadingSellers = false;
         }
@@ -132,6 +133,7 @@
           this.resetForm();
         } catch (error) {
           console.error('Erro ao salvar venda:', error.message);
+          this.$router.push('/login');
         } finally {
           this.loading = false;
         }
