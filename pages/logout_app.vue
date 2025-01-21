@@ -13,28 +13,9 @@ export default {
   methods: {
     async logout() {
       try {
-        const token = localStorage.getItem('token');
 
-        // Se o token existir, faz a requisição de logout
-        if (token) {
-          const response = await this.$axios.$post(
-            'logout',
-            {},
-            {
-              headers: {
-                Authorization: `Bearer ${token}`, // Adiciona o Bearer token no cabeçalho
-              }
-            }
-          );
+        this.$store.dispatch('user/logoutUser');
 
-          // Ação após o logout bem-sucedido, como redirecionamento ou limpeza de estado
-          console.log('Logout realizado com sucesso', response);
-          
-          localStorage.removeItem('token');
-          this.$router.push('/login');
-        } else {
-          console.log('Token de autenticação não encontrado');
-        }
       } catch (error) {
         console.error('Erro ao realizar o logout:', error);
       }

@@ -110,6 +110,7 @@
   
         } catch (error) {
           console.error('Erro ao carregar vendedores:', error.message);
+          this.$removeToken()
           this.$router.push('/login');
         } finally {
           this.loadingSellers = false;

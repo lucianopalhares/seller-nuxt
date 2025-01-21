@@ -52,7 +52,7 @@
             color="indigo"
             >              
 
-          <NuxtLink to="/create_seller">
+          <NuxtLink to="/create_seller" v-if="this.$checkToken()">
             <v-list-item>
               <v-list-item-icon>
                 <v-icon v-text="'mdi-table'"></v-icon>
@@ -63,7 +63,7 @@
             </v-list-item>
           </NuxtLink>
 
-          <NuxtLink to="/sellers">
+          <NuxtLink to="/sellers" v-if="this.$checkToken()">
             <v-list-item>
               <v-list-item-icon>
                 <v-icon v-text="'mdi-sitemap'"></v-icon>
@@ -74,7 +74,7 @@
             </v-list-item>
           </NuxtLink>
   
-          <NuxtLink to="/create_sale">
+          <NuxtLink to="/create_sale" v-if="this.$checkToken()">
             <v-list-item>
               <v-list-item-icon>
                 <v-icon v-text="'mdi-table'"></v-icon>
@@ -85,7 +85,7 @@
             </v-list-item>
           </NuxtLink>
             
-          <NuxtLink to="/register">
+          <NuxtLink to="/register" v-if="!this.$checkToken()">
             <v-list-item>
               <v-list-item-icon>
                 <v-icon v-text="'mdi-table'"></v-icon>
@@ -96,7 +96,18 @@
             </v-list-item>
           </NuxtLink>
 
-          <NuxtLink to="/logout_app">
+          <NuxtLink to="/login" v-if="!this.$checkToken()">
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon v-text="'mdi-table'"></v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title v-text="'Entrar'"></v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </NuxtLink>
+
+          <NuxtLink to="/logout_app" v-if="this.$checkToken()">
             <v-list-item>
               <v-list-item-icon>
                 <v-icon v-text="'mdi-table'"></v-icon>
@@ -173,20 +184,22 @@ export default {
  data: () => ({
     time: '',
     date: '',
-    projectName: ENV.projectName
  }),
   components: {   
     Loading
    },
- computed: {  
-      ...mapState({
-        sidebarLeft: state => state.config.sidebarLeft
-      }),
+  computed: {
+    ...mapState({
+      sidebarLeft: (state) => state.config.sidebarLeft,
+    }),
     ...mapGetters({
-      isAuthenticated: "isAuthenticated",
-      loggedInUser: "loggedInUser"
-    })
- },
+        userLoged: "user/user",
+      }),
+    projectName() {
+      const projectName2 = this.userLoged?.name || ENV.projectName;
+      return projectName2
+    },
+  },
   watch: {
 
   },

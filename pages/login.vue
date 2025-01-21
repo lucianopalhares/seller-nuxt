@@ -21,17 +21,9 @@
         }
   
         try {
-          const response = await this.$auth.loginWith('local', { data: userData })
+          this.$store.dispatch('user/loginUser', userData);
 
-          console.log('response', response)
-  
-          // Verifique se o login foi bem-sucedido e redirecione
-          if (response && response.data.token) {
-            localStorage.setItem('token', response.data.token);
-            this.$router.push('/sellers')  // Redireciona para a página de criação de vendedor
-          } else {
-            alert('Login falhou. Verifique suas credenciais e tente novamente.')
-          }
+          if (this.$checkToken()) this.$router.push('/sellers');
         } catch (error) {
           console.error('Erro ao fazer login:', error)
           alert('Ocorreu um erro ao fazer login. Tente novamente.')

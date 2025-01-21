@@ -27,6 +27,9 @@
           // Verifique se o cadastro foi bem-sucedido e redirecione
           if (response && response.data.token) {
             localStorage.setItem('token', response.data.token);
+
+            this.$store.dispatch('user/loginUser', response.data.user);
+
             this.$router.push('/sellers')  // Redireciona para a página de criação de cadastro
           } else {
             alert('cadastro falhou. Verifique suas credenciais e tente novamente.')

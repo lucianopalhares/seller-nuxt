@@ -51,6 +51,19 @@ npm run dev
 
 #### clique na url que ira exibir, acesse a pagina /login
 
+### API de consumo
+
+#### siga as instrucoes do seguinte repositorio para rodar a api de consumo
+
+https://github.com/lucianopalhares/seller-microservice
+
+#### rota da api:
+
+para autenticação, vendas e vendedores:
+
+http://localhost:8000
+
+
 ### License
 
 Open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

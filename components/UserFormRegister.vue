@@ -6,36 +6,21 @@
           <!-- Texto superior "Entrar" -->
           <v-row>
             <v-col class="text-center" cols="12">
-              <v-toolbar
-            flat
-            color="primary"
-            >
-
-            <v-toolbar-title >      
-                Cadastro de Usuário
-            </v-toolbar-title>
-
-            <v-divider
-                class="mx-12"
-                inset
-                vertical
-            ></v-divider>
-
-            <v-spacer></v-spacer>
-                
-            </v-toolbar>
+              <v-toolbar flat color="primary">
+                <v-toolbar-title>Cadastro de Usuário</v-toolbar-title>
+                <v-divider class="mx-12" inset vertical></v-divider>
+                <v-spacer></v-spacer>
+              </v-toolbar>
             </v-col>
           </v-row>
           
           <!-- Formulário -->
-          <v-form @submit.prevent="submitForm">
-
+          <v-form ref="form" @submit.prevent="submitForm" v-model="valid">
             <v-text-field
               v-model="user.name"
               label="Nome"
               required
               outlined
-              type="name"
               class="input-field mb-4"
             />
 
@@ -44,15 +29,17 @@
               label="Email"
               required
               outlined
-              type="email"
+              :rules="[emailRule]"
               class="input-field mb-4"
             />
+
             <v-text-field
               v-model="user.password"
               label="Senha"
               required
               outlined
               type="password"
+              :rules="[passwordRule]"
               class="input-field mb-4"
             />
 
@@ -62,10 +49,11 @@
               required
               outlined
               type="password"
+              :rules="[passwordMatchRule]"
               class="input-field mb-4"
             />
 
-            <v-btn type="submit" color="primary" block>
+            <v-btn :disabled="!valid" type="submit" color="primary" block>
               Salvar
             </v-btn>
           </v-form>
@@ -79,19 +67,33 @@
 export default {
   data() {
     return {
+      valid: false, // Para validação geral do formulário
       user: {
         name: '',
         email: '',
         password: '',
-      }
-    }
+        password_confirmation: '',
+      },
+      emailRule: (value) =>
+        !!value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) || 'Email inválido.',
+      passwordRule: (value) =>
+        (value && value.length >= 8) || 'A senha deve ter no mínimo 8 caracteres.',
+      passwordMatchRule: (value) =>
+        value === this.user.password || 'As senhas não correspondem.',
+    };
   },
   methods: {
     submitForm() {
-      this.$emit('submit', this.user)
+      if (this.$refs.form.validate()) {
+        // Enviar os dados
+        this.$emit('submit', this.user);
+        alert('Formulário enviado com sucesso!');
+      } else {
+        alert('Por favor, corrija os erros no formulário.');
+      }
     },
   },
-}
+};
 </script>
 
 <style scoped>
@@ -102,7 +104,7 @@ export default {
 
 /* Estilo para os inputs */
 .input-field {
-  background-color: black; /* Cinza claro */
+  background-color: black; /* Preto */
   padding: 10px;
   position: relative;
 }
