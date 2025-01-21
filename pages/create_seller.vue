@@ -59,7 +59,6 @@
           name: '',
           email: '',
         },
-        urlApi: 'http://localhost:8000/api',
         rules: {
           required: (value) => !!value || 'Campo obrigatório.',
           isEmail: (value) => /\S+@\S+\.\S+/.test(value) || 'E-mail inválido.',
@@ -71,7 +70,7 @@
         this.loading = true;
         try {
           const token = localStorage.getItem('token');
-          const response = await fetch(`${this.urlApi}/sellers`, {
+          const response = await fetch(`${process.env.URL_API}/sellers`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

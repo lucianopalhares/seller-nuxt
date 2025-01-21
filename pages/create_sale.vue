@@ -78,7 +78,6 @@
           seller_id: null,
           sale_value: null,
         },
-        urlApi: 'http://localhost:8000/api',
         rules: {
           required: (value) => !!value || 'Campo obrigatório.',
           isNumber: (value) =>
@@ -91,7 +90,7 @@
         this.loadingSellers = true;
         try {
           const token = localStorage.getItem('token');
-          const response = await fetch(`${this.urlApi}/sellers`, {
+          const response = await fetch(`${process.env.URL_API}/sellers`, {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${token}`,
@@ -101,9 +100,14 @@
           if (!response.ok) {
             throw new Error('Erro ao buscar vendedores');
           }
+
+          if (response.status === 204) {
+          console.log('Nenhum vendedor encontrado');
+         } else {
+           const result = await response.json();
+           this.sellers = result.data;
+         }
   
-          const result = await response.json();
-          this.sellers = result.data;
         } catch (error) {
           console.error('Erro ao carregar vendedores:', error.message);
           this.$router.push('/login');
@@ -115,7 +119,7 @@
         this.loading = true;
         try {
           const token = localStorage.getItem('token');
-          const response = await fetch(`${this.urlApi}/sales`, {
+          const response = await fetch(`${process.env.URL_API}/sales`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

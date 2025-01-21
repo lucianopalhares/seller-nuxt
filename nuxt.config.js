@@ -94,7 +94,7 @@ export default {
       local: {
         endpoints: {
           login: { url: 'http://localhost:8000/api/login', method: 'post', propertyName: 'token' },  // URL para login
-          logout: { url: 'http://localhost:8000/api/logout', method: 'get' },  // URL para logout
+          logout: { url: 'http://localhost:8000/api/logout', method: 'post' },  // URL para logout
           user: { url: 'http://localhost:8000/api/user', method: 'get', propertyName: 'data' },  // URL para obter dados do usuário
           register: { url: 'http://localhost:8000/api/register', method: 'post', propertyName: 'token' }  // URL para cadastrar usuário
         },
