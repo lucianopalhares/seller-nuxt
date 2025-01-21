@@ -97,6 +97,27 @@
             </v-list-item>
           </NuxtLink>
             
+          <NuxtLink to="/register">
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon v-text="'mdi-table'"></v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title v-text="'Cadastrar Usuário'"></v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </NuxtLink>
+
+          <NuxtLink to="/logout_app">
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon v-text="'mdi-table'"></v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title v-text="'Sair'"></v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </NuxtLink>
 
           </v-list-item-group>
         </v-list>

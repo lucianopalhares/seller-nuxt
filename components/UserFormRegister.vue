@@ -29,6 +29,16 @@
           
           <!-- Formulário -->
           <v-form @submit.prevent="submitForm">
+
+            <v-text-field
+              v-model="user.name"
+              label="Nome"
+              required
+              outlined
+              type="name"
+              class="input-field mb-4"
+            />
+
             <v-text-field
               v-model="user.email"
               label="Email"
@@ -45,8 +55,19 @@
               type="password"
               class="input-field mb-4"
             />
+
+            <v-text-field
+              v-model="user.password_confirmation"
+              label="Confirmação de Senha"
+              required
+              outlined
+              type="password"
+              :rules="[passwordsMatch]"
+              class="input-field mb-4"
+            />
+
             <v-btn type="submit" color="primary" block>
-              Entrar
+              Salvar
             </v-btn>
           </v-form>
         </v-card>
