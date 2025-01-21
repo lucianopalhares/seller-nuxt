@@ -9,7 +9,7 @@ export default function ({ $axios, redirect }) {
         console.log('erro axios 401', error.response.status);
         
         // Redireciona para a página de login usando o redirect
-        redirect('/login');
+        localStorage.removeItem('token');
       }
     });
   }

@@ -62,7 +62,6 @@
               required
               outlined
               type="password"
-              :rules="[passwordsMatch]"
               class="input-field mb-4"
             />
 
